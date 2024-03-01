@@ -1,0 +1,75 @@
+// 1. Basic Types
+let numberVar: number = 18;
+let stringVar: string = "Hello Visakhapatnam";
+let booleanVar: boolean = true;
+let arrayOfNumbers: number[] = [90,91,92,93,94];
+let tupleVar: [string, number] = ["Friday", 5];
+
+enum DaysOfWeek {
+  Sunday,
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday
+}
+
+// 2. Functions
+function add(a: number, b: number): number {
+  return a+b;
+}
+
+function capitalize(s: string): string {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+// 3. Interfaces
+interface Person {
+  name: string;
+  age: number;
+  email: string;
+}
+
+let user: Person = {
+  name: "Virat",
+  age: 35,
+  email: "Virat18@example.com"
+};
+
+// 4. Classes
+class Car {
+  make: string;
+  model: string;
+  year: number;
+
+  constructor(make: string, model: string, year: number) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+  }
+
+  displayInfo(): void {
+    console.log(`Car Info: ${this.year} ${this.make} ${this.model}`);
+  }
+}
+
+// 5. Generics
+function reverseArray<T>(array: T[]): T[] {
+  return array.reverse();
+}
+
+// for output
+console.log(numberVar);
+console.log(stringVar);
+console.log(booleanVar);
+console.log(arrayOfNumbers);
+console.log(tupleVar);
+console.log(DaysOfWeek.Saturday);
+console.log(add(5, 3));
+console.log(capitalize("assignment"));
+console.log(user);
+const myCar = new Car("Tata", "Model-1", 2024);
+myCar.displayInfo();
+console.log(reverseArray([2,4,6,8]));
+console.log(reverseArray(["cm","pm","mlc", "mla", "mp"]));
