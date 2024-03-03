@@ -1,0 +1,21 @@
+//Task-1 Template Creation: Create a simple Angular component with a template that displays a list of items. Each item in the list should contain at least two properties (e.g., name and description).
+//Filename:item.component.ts
+import { Component } from "@angular/core";
+@Component({
+     selector:'item',
+     template:
+     `<div *ngFor="let item of items">
+    <ol> <h2>{{ item.name }}</h2>
+     <p>{{ item.description }}</p></ol>
+   </div>`
+})
+export class ItemComponent{
+       items: any[] = [
+              { name: 'Milk', description: '2 litres' },
+              { name: 'Sugar', description: '2 kg' },
+              { name: 'Salt', description: '3 kg' },
+              
+            ];
+  }
+
+//Task-2 Service Creation: Create a service called DataService. This service should provide a method to retrieve a list of items. Simulate data retrieval by returning a hardcoded array of objects within the service.
