@@ -19,3 +19,67 @@ export class ItemComponent{
   }
 
 //Task-2 Service Creation: Create a service called DataService. This service should provide a method to retrieve a list of items. Simulate data retrieval by returning a hardcoded array of objects within the service.
+//Task-3 Dependency Injection: Inject the DataService into your component from Task 1. Use this service to populate the list of items displayed in your template.
+//Filename:dataservice.service.ts
+// data.service.ts
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class DataService {
+  getItems(): any[] {
+    // Simulated data retrieval
+    return [
+       { name: 'Milk', description: '2 litres' },
+              { name: 'Sugar', description: '2 kg' },
+              { name: 'Salt', description: '3 kg' },
+    ];
+  }
+}
+file name:item.component.ts
+// item.component.ts
+
+import { Component, OnInit } from '@angular/core';
+import { DataService } from './data.service';
+
+@Component({
+  selector: 'item',
+  template: `
+    <div *ngFor="let item of items">
+      <h2>{{ item.name }}</h2>
+      <p>{{ item.description }}</p>
+      <hr />
+    </div>
+  `,
+})
+export class ItemComponent implements OnInit {
+  items: any[] = [];
+
+  constructor(private dataService: DataService) {}
+
+  ngOnInit(): void {
+    this.getItems();
+  }
+
+  getItems(): void {
+    this.items = this.dataService.getItems();
+  }
+}
+file name:app.module.ts
+// app.module.ts
+
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ItemComponent } from './item/item.component';
+import { DataService } from './data.service';
+
+@NgModule({
+  declarations: [ItemComponent],
+  imports: [BrowserModule],
+  providers: [DataService],
+  bootstrap: [ItemComponent],
+})
+export class AppModule {}
+
