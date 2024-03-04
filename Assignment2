@@ -22,15 +22,8 @@ export class ItemComponent{
 //Task-3 Dependency Injection: Inject the DataService into your component from Task 1. Use this service to populate the list of items displayed in your template.
 //Filename:dataservice.service.ts
 // data.service.ts
-
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root',
-})
 export class DataService {
   getItems(): any[] {
-    // Simulated data retrieval
     return [
        { name: 'Milk', description: '2 litres' },
               { name: 'Sugar', description: '2 kg' },
@@ -54,14 +47,11 @@ import { DataService } from './data.service';
     </div>
   `,
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent  {
   items: any[] = [];
 
-  constructor(private dataService: DataService) {}
+  constructor(dataService: DataService) {}
 
-  ngOnInit(): void {
-    this.getItems();
-  }
 
   getItems(): void {
     this.items = this.dataService.getItems();
