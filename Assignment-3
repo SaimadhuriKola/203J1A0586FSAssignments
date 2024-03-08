@@ -1,3 +1,109 @@
 //app.component.html
 <img src="https://www.pixelstalk.net/wp-content/uploads/2016/08/Wonderful-Nature-Colorful-Scene-HD.jpg">
 <Counter></Counter>
+
+
+//CounterComponent.component.html
+import { Component } from "@angular/core";
+@Component({
+    selector:'Counter',
+    template:
+    `
+    <div>
+  <p>Counter Value: {{ counter }}</p>
+  <button (click)="increment()">Increment</button>
+  <button (click)="decrement()">Decrement</button>
+</div>
+`,
+styleUrls: ['./counter.component.css']
+
+})
+export class CounterComponent{
+ counter:number=0;
+ increment() {
+    this.counter++;
+  }
+
+  decrement() {
+    if (this.counter > 0) {
+      this.counter--;
+    }   
+}
+}
+
+
+//app.module.ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { CounterComponent } from './CounterComponent.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,CounterComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+
+/* counter.component.css */
+
+div {
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  p {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  button {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  /* your-component.component.css */
+
+div {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #12c834;
+  }
+  
+  h2 {
+    font-size: 24px;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Optional: Add a border radius to the image */
+  }
+  
+  
